@@ -28,12 +28,16 @@ Route::middleware(['isLogin'])->group(function (){
     Route::get('/home', [Controller::class, 'landing'])->name('home');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
+    Route::get('/profile', [Controller::class, 'profile'])->name('profile');
+
     Route::prefix('/cars')->name('cars.')->group(function() {
         Route::get('/', [CarController::class, 'index'])->name('index');
         Route::get('/create', [CarController::class, 'create'])->name('create');
         Route::post('/add', [CarController::class, 'store'])->name('store');
 
         Route::delete('/delete/{id}', [CarController::class, 'destroy'])->name('delete');
+        Route::get('/edit/{id}', [CarController::class, 'edit'])->name('edit');
+        Route::patch('/edit/{id}', [CarController::class, 'update'])->name('update');
     });
 
     Route::prefix('/users')->name('users.')->group(function () {

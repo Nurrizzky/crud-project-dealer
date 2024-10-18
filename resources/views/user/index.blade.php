@@ -9,11 +9,10 @@
 @section('content')
 
   <div class="flex justify-between items-center mb-5">
-   
-       <form action="{{ route('users.index') }}">
-         <input type="text" name="search_user" placeholder="Cari user..." class="bg-[#111111] py-2 px-3 my-5 rounded-md shadow-lg border border-white bg-opacity-60 backdrop-blur-sm border-opacity-50">
-         <button type="submit" class="bg-blue-600 hover:bg-blue-800 transition-all duration-150 py-2 px-3 my-5 rounded-md shadow-lg border border-white border-opacity-50">Cari</button>
-       </form>
+    <form action="{{ route('users.index') }}">
+      <input type="text" name="search_user" placeholder="Cari user..." class="bg-[#111111] py-2 px-3 my-5 rounded-md shadow-lg border border-white bg-opacity-60 backdrop-blur-sm border-opacity-50">
+      <button type="submit" class="bg-blue-600 hover:bg-blue-800 transition-all duration-150 py-2 px-3 my-5 rounded-md shadow-lg border border-white border-opacity-50">Cari</button>
+    </form>
     <div class="flex justify-end items-center">
        <a href="{{ route('users.create') }}" class="bg-green-600 hover:bg-green-800 transition-all duration-150 py-2 px-3 my-5 rounded-md shadow-lg border border-white border-opacity-50">Tambah Baru</a>
     </div>
@@ -45,23 +44,38 @@
           @foreach ($users as $index => $user)
             <tr>
               <td class="border border-[#373737] p-3 text-center">
-                {{ ($users->currentPage()-1) * ($users->perPage()) + ($index + 1) }}
+                {{ ($users->currentPage()-1) * ($users->perPage()) + ($index + 1) }}.
               </td>
               <td class="border border-[#373737] p-3"> {{ $user['name'] }} </td>
               <td class="border border-[#373737] p-3"> {{ $user['email'] }} </td>
               <td class="border border-[#373737] p-3"> {{ $user['role'] }} </td>
 
               <td class="border border-[#373737] p-3 gap-3 flex justify-center items-center h-full">
-                <a href="{{ route('users.edit', $user->id) }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 transition-all duration-100">
-                  <i class="ph ph-pencil-simple-line text-xl"></i> 
-                  Edit
-                </a>
-                <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 transition-all duration-100" onclick="showModalDelete('{{ $user->id }}', '{{ $user->email }}')">
-                  <i class="ph ph-trash-simple text-xl"></i>
-                   Delete
-                </button>
+                @if ($user['name'] == 'adminTes' || $user['email'] == 'adminTes@example.com' || $user['name'] == 'karyawanTes' || $user['email'] == 'karyawanTes@example.com')
+                  <button style="cursor: not-allowed" class="bg-gray-700 text-opacity-50 flex justify-center items-center gap-2 text-white px-4 py-2 rounded transition-all duration-100">
+                    <i class="ph-light ph-empty text-xl"></i>  
+                    No Action !!
+                  </button>
+                @else
+                  <a href="{{ route('users.edit', $user->id) }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 transition-all duration-100">
+                    <i class="ph ph-pencil-simple-line text-xl"></i> 
+                    Edit
+                  </a>
+                  <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 transition-all duration-100" onclick="showModalDelete('{{ $user->id }}', '{{ $user->email }}')">
+                    <i class="ph ph-trash-simple text-xl"></i>
+                    Delete
+                  </button>
+                @endif
               </td>
-              <td class="border border-[#373737] p-3 text-center">{{ $user->updated_at->diffForHumans() }}</td>
+                @if ($user['name'] == 'adminTes' || $user['email'] == 'adminTes@example.com' || $user['name'] == 'karyawanTes' || $user['email'] == 'karyawanTes@example.com')
+                  <td class="border bg-gray-600 text-white px-4 py-2   border-[#373737] text-center">
+                    <button class="flex justify-center items-center text-center w-full gap-2" style="cursor: not-allowed">
+                      <i class="ph-light ph-user-circle-gear text-xl"></i> Seed Account</td>
+                    </button>
+                @else
+                  <td class="border border-[#373737] p-3 text-center">{{ $user->updated_at->diffForHumans() }}</td>
+          
+                @endif
             </tr>
           @endforeach
 

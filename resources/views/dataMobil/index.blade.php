@@ -48,8 +48,11 @@
              <td class="border border-[#373737] p-3">{{ $car['color'] }}</td>
              <td class="border border-[#373737] p-3">{{ $car['transmission'] }}</td>
              <td class="border border-[#373737] p-3">{{ $car['years'] }}</td>
-             <td class="border border-[#373737] p-3">
-               <button class="bg-blue-500 text-white px-4 py-2 rounded">Edit</button>
+             <td class="border border-[#373737] p-3 gap-3 flex justify-center items-center h-full">
+              <a href="{{ route('cars.edit', $car->id) }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 transition-all duration-100">
+                <i class="ph ph-pencil-simple-line text-xl"></i> 
+                Edit
+              </a>
                <button class= "bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 transition-all duration-100" onclick="showModalDeleteMobil('{{ $car->id }}', '{{ $car->brand }}')">
                 <i class="ph ph-trash-simple text-xl"></i>
                 Delete</button>
@@ -74,7 +77,7 @@
           </div>
             <!-- Modal Body -->
                 <div class="mt-5">
-                  Apakah anda yakin ingin menghapus data Mobil dengan Brand : 
+                  Apakah anda yakin ingin menghapus seluruh data Mobil dengan Brand : 
                   <b id="nama_user" class=" text-lg"></b>
                   ini ?
                 </div>

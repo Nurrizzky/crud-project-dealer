@@ -23,7 +23,7 @@
          <div class="w-full h-full rounded-md flex flex-col justify-start gap-2  bg-[#ffffff] backdrop-blur-2xl bg-opacity-5 border-opacity-20 border border-white p-3 font-Poppins">
             {{-- navigation --}}
             {{-- Card Profile --}}
-            <div class="w-full h-16 p-3 flex gap-2 bg-[#111111] rounded-md justify- items-center text-white shadow-md">
+            <div class="w-full h-16 p-3 flex gap-2 bg-[#111111] rounded-md items-center text-white shadow-md">
                <img src="{{ asset('img/user.jpeg') }}" class="rounded-full w-11 h-11" alt="user">
                <div class="info">
                   <h3>{{ Auth::user()->name }}</h3>
@@ -37,8 +37,8 @@
                            <i class="ph ph-house mr-2"></i> Dashboard
                         </div>
                      </a>
-                     <a href="#" class="text-[#ffffff7c] cursor-not-allowed">
-                        <div class="bg-[#111111a4] py-2 px-3 w-full rounded-md shadow-sm">
+                     <a href="{{ route('profile') }}" class="text-white">
+                        <div class="bg-[#111111] py-2 px-3 w-full rounded-md shadow-sm">
                            <i class="ph ph-user-circle mr-2"></i> Profile
                         </div>
                      </a>
