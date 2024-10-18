@@ -61,14 +61,16 @@
                               <i class="ph ph-car text-xl"></i>
                            </div>
                         </a>
-                        <a href="{{ route('users.index') }}" class="text-white bg-[#111111] px-3 py-2 rounded-md">
-                           <div class="flex justify-between items-center">
-                              <div class="">
-                                 <i class="ph ph-arrow-elbow-down-right mr-1"></i> Data Account 
+                        @if (Auth::user()->role == 'admin') 
+                           <a href="{{ route('users.index') }}" class="text-[#fff] bg-[#111111] px-3 py-2 rounded-md">
+                              <div class="flex justify-between items-center">
+                                 <div class="">
+                                    <i class="ph ph-arrow-elbow-down-right mr-1"></i> Data Account 
+                                 </div>
+                                 <i class="ph ph-user-list text-xl"></i>
                               </div>
-                              <i class="ph ph-user-list text-xl"></i>
-                           </div>
-                        </a>
+                           </a>
+                        @endif
                      </div>
                   </div>
                </div>

@@ -130,16 +130,16 @@ class UserController extends Controller
         }
     }
 
-    // ------###
+    // ###------###
     // FUNCTION LOGIN
-    // ------###
+    // ###------###
 
     public function showLogin() {
         return view('dashboard.login');
     }
 
     public function login(Request $request) {
-        $credentials = $request->only('name', 'email', 'password');
+        $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
             return redirect()->route('home')->with('success', 'Login Berhasil');

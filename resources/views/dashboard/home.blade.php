@@ -9,7 +9,7 @@
 @section('content')
 
    @if (Session::get('failed'))
-      <div class="bg-red-700 p-5 rounded mt-5">{{ Session::get('failed') }}</div>
+      <div class="bg-red-700 p-5 rounded mt-5 font-semibold">{{ Session::get('failed') }}</div>
    @endif
    <div class=" w-full h-screen py-5 px-2 font-Poppins">
       <div class="card w-full flex flex-col h-full max-xl:h-max p-7 rounded-md bg-[#1e1e1e]">

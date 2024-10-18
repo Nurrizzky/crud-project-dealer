@@ -29,6 +29,7 @@
             <th class="p-3 rounded-md border border-[#373737]">transmission</th>
             <th class="p-3 rounded-md border border-[#373737]">Years</th>
             <th class="p-3 rounded-md border border-[#373737]">Action</th>
+            <th class="p-3 rounded-md border border-[#373737]">Last Updated</th>
           </tr>
         </thead>
         <tbody>
@@ -57,6 +58,7 @@
                 <i class="ph ph-trash-simple text-xl"></i>
                 Delete</button>
              </td>
+             <td class="border border-[#373737] p-3 text-center">{{ $car->updated_at->diffForHumans() }}</td>
            </tr>
          @endforeach
 
